@@ -5,6 +5,8 @@
 package com.startsup.merchant.entities;
 
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -54,11 +56,13 @@ public class Items implements Serializable {
     private Byte       isVeg ;
 
     @Column(name="additional_details", length=1073741824)
+    @JsonIgnore
     private String     additionalDetails ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="merchant_id", referencedColumnName="id", insertable=false, updatable=false)
     private Merchants  merchants ; 
 

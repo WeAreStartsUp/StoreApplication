@@ -38,15 +38,16 @@ public class MerchantController {
     }
 
     @GetMapping("/api/v1/merchants")
-    public ResponseEntity<List<Merchants>> fetchAllMerchants() {
+    public List<Merchants> fetchAllMerchants() {
         logger.info("Request Received");
         List<Merchants> merchants = merchantService.getAllMerchants();
         logger.info("Response={}", merchants);
-        return ResponseEntity.ok(merchants);
+        return merchants;
     }
 
     @PostMapping("/api/v1/merchants")
     public ResponseEntity<Merchants> createOrUpdateMerchant(@RequestBody Merchants merchant) {
+        logger.info("Request received, {}", merchant);
         return ResponseEntity.ok(merchantService.updateMerchant(merchant).get());
     }
 

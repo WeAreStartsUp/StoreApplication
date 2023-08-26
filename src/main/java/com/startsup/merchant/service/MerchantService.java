@@ -44,6 +44,7 @@ public class MerchantService {
             merchant = merchantsRepository.save(merchant);
             return Optional.of(merchant);
         } catch (Exception e) {
+            e.printStackTrace();
             return Optional.empty();
         }
     }

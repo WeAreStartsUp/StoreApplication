@@ -10,10 +10,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Spring data Jpa repository for "Items" <br>
  * @author Telosys (http://www.telosys.org/) version 3.3.0
  */
 @Repository
 public interface ItemsRepository extends JpaRepository<Items, Integer>, JpaSpecificationExecutor<Items> {
+
+    List<Items> findItemsByMerchantId(int id);
 }

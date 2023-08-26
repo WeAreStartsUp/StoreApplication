@@ -7,6 +7,8 @@ package com.startsup.merchant.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -62,11 +64,13 @@ public class Merchants implements Serializable {
     private BigDecimal commissionRate ;
 
     @Column(name="additional_details", length=1073741824)
+    @JsonIgnore
     private String     additionalDetails ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
     @OneToMany(mappedBy="merchants")
+    @JsonIgnore
     private List<Items> listOfItems ; 
 
 

@@ -1,18 +1,13 @@
 package com.startsup.merchant.controller;
 
 import com.startsup.merchant.entities.Items;
-import com.startsup.merchant.entities.Merchants;
 import com.startsup.merchant.service.ItemService;
-import com.startsup.merchant.service.MerchantService;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(maxAge = 3600)

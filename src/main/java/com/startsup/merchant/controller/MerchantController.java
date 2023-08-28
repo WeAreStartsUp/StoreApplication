@@ -2,7 +2,6 @@ package com.startsup.merchant.controller;
 
 import com.startsup.merchant.entities.Merchants;
 import com.startsup.merchant.service.MerchantService;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

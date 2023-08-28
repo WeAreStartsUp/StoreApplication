@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Telosys Database Repository --><root>
-    <tableList databaseId="0" databaseName="merchantdb" databaseProductName="MySQL" generation="2023-08-26 12:55:33">
+    <tableList databaseId="0" databaseName="merchantdb" databaseProductName="MySQL" generation="2023-08-28 12:13:16">
         <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="Customers" name="customers" schema="">
             <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
             <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
@@ -63,7 +63,16 @@
             <column dbComment="" dbDefaultValue="" dbName="commission_from" dbNotNull="false" dbPosition="11" dbSize="10" dbTypeName="VARCHAR" inputType="text" javaName="commissionFrom" javaType="java.lang.String" jdbcTypeCode="12" label="Commission from" maxLength="10" notNull="false" selected="true"/>
             <column dbComment="" dbDefaultValue="" dbName="commission_rate" dbNotNull="false" dbPosition="12" dbSize="38" dbTypeName="DECIMAL" inputType="number" javaName="commissionRate" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Commission rate" notNull="false" selected="true"/>
             <column dbComment="" dbDefaultValue="" dbName="additional_details" dbNotNull="false" dbPosition="13" dbSize="1073741824" dbTypeName="JSON" inputType="text" javaName="additionalDetails" javaType="java.lang.String" jdbcTypeCode="-1" label="Additional details" longText="true" maxLength="1073741824" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="phone" dbNotNull="true" dbPosition="14" dbSize="20" dbTypeName="VARCHAR" inputType="text" javaName="phone" javaType="java.lang.String" jdbcTypeCode="12" label="Phone" maxLength="20" notEmpty="true" notNull="true" selected="true"/>
+            <fk name="MERCHANT_ZONE">
+                <fkcol colname="zone_id" colref="id" deferrable="7" deleterule="1" sequence="1" tablename="merchants" tableref="zones" updaterule="1"/>
+            </fk>
             <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="ITEM_MERCHANT_ID" id="LINK_FK_ITEM_MERCHANT_ID_I" inverseSideOf="LINK_FK_ITEM_MERCHANT_ID_O" javaName="listOfItems" javaType="unused" joinTableName="" mappedBy="merchants" optional="" owningSide="false" sourceTableName="merchants" targetEntity="Items" targetTableName="items" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="MERCHANT_ZONE" id="LINK_FK_MERCHANT_ZONE_O" inverseSideOf="" javaName="zones" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="merchants" targetEntity="Zones" targetTableName="zones" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="zone_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
         </table>
         <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="MerchantsSeq" name="merchants_seq" schema="">
             <column dbComment="" dbDefaultValue="" dbName="next_val" dbNotNull="false" dbPosition="1" dbSize="19" dbTypeName="BIGINT" inputType="number" javaName="nextVal" javaType="java.lang.Long" jdbcTypeCode="-5" label="Next val" notNull="false" selected="true"/>
@@ -74,6 +83,7 @@
             <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="true" dbPosition="3" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
             <column dbComment="" dbDefaultValue="" dbName="additional_details" dbNotNull="false" dbPosition="4" dbSize="1073741824" dbTypeName="JSON" inputType="text" javaName="additionalDetails" javaType="java.lang.String" jdbcTypeCode="-1" label="Additional details" longText="true" maxLength="1073741824" notNull="false" selected="true"/>
             <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="ZONE_ID_CUS_FK" id="LINK_FK_ZONE_ID_CUS_FK_I" inverseSideOf="LINK_FK_ZONE_ID_CUS_FK_O" javaName="listOfCustomers" javaType="unused" joinTableName="" mappedBy="zones" optional="" owningSide="false" sourceTableName="zones" targetEntity="Customers" targetTableName="customers" used="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="MERCHANT_ZONE" id="LINK_FK_MERCHANT_ZONE_I" inverseSideOf="LINK_FK_MERCHANT_ZONE_O" javaName="listOfMerchants" javaType="unused" joinTableName="" mappedBy="zones" optional="" owningSide="false" sourceTableName="zones" targetEntity="Merchants" targetTableName="merchants" used="true"/>
         </table>
         <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="ZonesSeq" name="zones_seq" schema="">
             <column dbComment="" dbDefaultValue="" dbName="next_val" dbNotNull="false" dbPosition="1" dbSize="19" dbTypeName="BIGINT" inputType="number" javaName="nextVal" javaType="java.lang.Long" jdbcTypeCode="-5" label="Next val" notNull="false" selected="true"/>

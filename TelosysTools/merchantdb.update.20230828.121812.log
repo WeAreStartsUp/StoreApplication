@@ -1,0 +1,25 @@
+Update date : Mon Aug 28 12:18:12 IST 2023
+ 
+ Table 'customers' found in repository
+ (=) table 'customers' unchanged
+ 
+ Table 'customers_seq' found in repository
+ (=) table 'customers_seq' unchanged
+ 
+ Table 'items' found in repository
+ (=) table 'items' unchanged
+ 
+ Table 'items_seq' found in repository
+ (=) table 'items_seq' unchanged
+ 
+ Table 'merchants' found in repository
+ (=) table 'merchants' unchanged
+ 
+ Table 'merchants_seq' found in repository
+ (=) table 'merchants_seq' unchanged
+ 
+ Table 'zones' found in repository
+ (=) table 'zones' unchanged
+ 
+ Table 'zones_seq' found in repository
+ (=) table 'zones_seq' unchanged

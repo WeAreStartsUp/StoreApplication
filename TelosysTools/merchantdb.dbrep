@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+    <tableList databaseId="0" databaseName="merchantdb" databaseProductName="MySQL" generation="2023-08-28 12:13:16">
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="Customers" name="customers" schema="">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="email" dbNotNull="false" dbPosition="3" dbSize="200" dbTypeName="VARCHAR" inputType="text" javaName="email" javaType="java.lang.String" jdbcTypeCode="12" label="Email" maxLength="200" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="phone" dbNotNull="true" dbPosition="4" dbSize="20" dbTypeName="VARCHAR" inputType="text" javaName="phone" javaType="java.lang.String" jdbcTypeCode="12" label="Phone" maxLength="20" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="zone_id" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="zoneId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Zone id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="address_first_line" dbNotNull="true" dbPosition="6" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="addressFirstLine" javaType="java.lang.String" jdbcTypeCode="12" label="Address first line" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="address_second_line" dbNotNull="false" dbPosition="7" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="addressSecondLine" javaType="java.lang.String" jdbcTypeCode="12" label="Address second line" maxLength="100" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="city" dbNotNull="true" dbPosition="8" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="city" javaType="java.lang.String" jdbcTypeCode="12" label="City" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="state" dbNotNull="true" dbPosition="9" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="state" javaType="java.lang.String" jdbcTypeCode="12" label="State" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="country" dbNotNull="true" dbPosition="10" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="country" javaType="java.lang.String" jdbcTypeCode="12" label="Country" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="additional_details" dbNotNull="false" dbPosition="11" dbSize="1073741824" dbTypeName="JSON" inputType="text" javaName="additionalDetails" javaType="java.lang.String" jdbcTypeCode="-1" label="Additional details" longText="true" maxLength="1073741824" notNull="false" selected="true"/>
+            <fk name="ZONE_ID_CUS_FK">
+                <fkcol colname="zone_id" colref="id" deferrable="7" deleterule="1" sequence="1" tablename="customers" tableref="zones" updaterule="1"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="ZONE_ID_CUS_FK" id="LINK_FK_ZONE_ID_CUS_FK_O" inverseSideOf="" javaName="zones" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="customers" targetEntity="Zones" targetTableName="zones" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="zone_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="CustomersSeq" name="customers_seq" schema="">
+            <column dbComment="" dbDefaultValue="" dbName="next_val" dbNotNull="false" dbPosition="1" dbSize="19" dbTypeName="BIGINT" inputType="number" javaName="nextVal" javaType="java.lang.Long" jdbcTypeCode="-5" label="Next val" notNull="false" selected="true"/>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="Items" name="items" schema="">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="false" dbPosition="2" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="45" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="false" dbPosition="3" dbSize="100" dbTypeName="VARCHAR" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="100" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="price" dbNotNull="false" dbPosition="4" dbSize="22" dbTypeName="DOUBLE" inputType="number" javaName="price" javaType="java.lang.Double" jdbcTypeCode="8" label="Price" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="merchant_id" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="merchantId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Merchant id" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="category" dbNotNull="false" dbPosition="6" dbSize="60" dbTypeName="VARCHAR" inputType="text" javaName="category" javaType="java.lang.String" jdbcTypeCode="12" label="Category" maxLength="60" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="tags" dbNotNull="false" dbPosition="7" dbSize="65535" dbTypeName="TEXT" inputType="text" javaName="tags" javaType="java.lang.String" jdbcTypeCode="-1" label="Tags" longText="true" maxLength="65535" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="custom_tax" dbNotNull="false" dbPosition="8" dbSize="22" dbTypeName="DOUBLE" inputType="number" javaName="customTax" javaType="java.lang.Double" jdbcTypeCode="8" label="Custom tax" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="custom_commission" dbNotNull="false" dbPosition="9" dbSize="22" dbTypeName="DOUBLE" inputType="number" javaName="customCommission" javaType="java.lang.Double" jdbcTypeCode="8" label="Custom commission" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="is_veg" dbNotNull="false" dbPosition="10" dbSize="3" dbTypeName="TINYINT" inputType="number" javaName="isVeg" javaType="java.lang.Byte" jdbcTypeCode="-6" label="Is veg" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="additional_details" dbNotNull="false" dbPosition="11" dbSize="1073741824" dbTypeName="JSON" inputType="text" javaName="additionalDetails" javaType="java.lang.String" jdbcTypeCode="-1" label="Additional details" longText="true" maxLength="1073741824" notNull="false" selected="true"/>
+            <fk name="ITEM_MERCHANT_ID">
+                <fkcol colname="merchant_id" colref="id" deferrable="7" deleterule="1" sequence="1" tablename="items" tableref="merchants" updaterule="1"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="ITEM_MERCHANT_ID" id="LINK_FK_ITEM_MERCHANT_ID_O" inverseSideOf="" javaName="merchants" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="items" targetEntity="Merchants" targetTableName="merchants" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="merchant_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="ItemsSeq" name="items_seq" schema="">
+            <column dbComment="" dbDefaultValue="" dbName="next_val" dbNotNull="false" dbPosition="1" dbSize="19" dbTypeName="BIGINT" inputType="number" javaName="nextVal" javaType="java.lang.Long" jdbcTypeCode="-5" label="Next val" notNull="false" selected="true"/>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="Merchants" name="merchants" schema="">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="60" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="60" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="zone_id" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="zoneId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Zone id" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="false" dbPosition="4" dbSize="16777215" dbTypeName="MEDIUMTEXT" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="-1" label="Description" longText="true" maxLength="16777215" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="rating" dbNotNull="false" dbPosition="5" dbSize="38" dbTypeName="DECIMAL" inputType="number" javaName="rating" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Rating" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="address_first_line" dbNotNull="true" dbPosition="6" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="addressFirstLine" javaType="java.lang.String" jdbcTypeCode="12" label="Address first line" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="address_second_line" dbNotNull="true" dbPosition="7" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="addressSecondLine" javaType="java.lang.String" jdbcTypeCode="12" label="Address second line" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="city" dbNotNull="true" dbPosition="8" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="city" javaType="java.lang.String" jdbcTypeCode="12" label="City" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="state" dbNotNull="false" dbPosition="9" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="state" javaType="java.lang.String" jdbcTypeCode="12" label="State" maxLength="45" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="pincode" dbNotNull="false" dbPosition="10" dbSize="10" dbTypeName="VARCHAR" inputType="text" javaName="pincode" javaType="java.lang.String" jdbcTypeCode="12" label="Pincode" maxLength="10" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="commission_from" dbNotNull="false" dbPosition="11" dbSize="10" dbTypeName="VARCHAR" inputType="text" javaName="commissionFrom" javaType="java.lang.String" jdbcTypeCode="12" label="Commission from" maxLength="10" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="commission_rate" dbNotNull="false" dbPosition="12" dbSize="38" dbTypeName="DECIMAL" inputType="number" javaName="commissionRate" javaType="java.math.BigDecimal" jdbcTypeCode="3" label="Commission rate" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="additional_details" dbNotNull="false" dbPosition="13" dbSize="1073741824" dbTypeName="JSON" inputType="text" javaName="additionalDetails" javaType="java.lang.String" jdbcTypeCode="-1" label="Additional details" longText="true" maxLength="1073741824" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="phone" dbNotNull="true" dbPosition="14" dbSize="20" dbTypeName="VARCHAR" inputType="text" javaName="phone" javaType="java.lang.String" jdbcTypeCode="12" label="Phone" maxLength="20" notEmpty="true" notNull="true" selected="true"/>
+            <fk name="MERCHANT_ZONE">
+                <fkcol colname="zone_id" colref="id" deferrable="7" deleterule="1" sequence="1" tablename="merchants" tableref="zones" updaterule="1"/>
+            </fk>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="ITEM_MERCHANT_ID" id="LINK_FK_ITEM_MERCHANT_ID_I" inverseSideOf="LINK_FK_ITEM_MERCHANT_ID_O" javaName="listOfItems" javaType="unused" joinTableName="" mappedBy="merchants" optional="" owningSide="false" sourceTableName="merchants" targetEntity="Items" targetTableName="items" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="MERCHANT_ZONE" id="LINK_FK_MERCHANT_ZONE_O" inverseSideOf="" javaName="zones" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="merchants" targetEntity="Zones" targetTableName="zones" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="zone_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="MerchantsSeq" name="merchants_seq" schema="">
+            <column dbComment="" dbDefaultValue="" dbName="next_val" dbNotNull="false" dbPosition="1" dbSize="19" dbTypeName="BIGINT" inputType="number" javaName="nextVal" javaType="java.lang.Long" jdbcTypeCode="-5" label="Next val" notNull="false" selected="true"/>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="Zones" name="zones" schema="">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="VARCHAR" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="10" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="true" dbPosition="3" dbSize="45" dbTypeName="VARCHAR" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="additional_details" dbNotNull="false" dbPosition="4" dbSize="1073741824" dbTypeName="JSON" inputType="text" javaName="additionalDetails" javaType="java.lang.String" jdbcTypeCode="-1" label="Additional details" longText="true" maxLength="1073741824" notNull="false" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="ZONE_ID_CUS_FK" id="LINK_FK_ZONE_ID_CUS_FK_I" inverseSideOf="LINK_FK_ZONE_ID_CUS_FK_O" javaName="listOfCustomers" javaType="unused" joinTableName="" mappedBy="zones" optional="" owningSide="false" sourceTableName="zones" targetEntity="Customers" targetTableName="customers" used="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="MERCHANT_ZONE" id="LINK_FK_MERCHANT_ZONE_I" inverseSideOf="LINK_FK_MERCHANT_ZONE_O" javaName="listOfMerchants" javaType="unused" joinTableName="" mappedBy="zones" optional="" owningSide="false" sourceTableName="zones" targetEntity="Merchants" targetTableName="merchants" used="true"/>
+        </table>
+        <table catalog="merchantdb" databaseComment="" databaseType="TABLE" javaBean="ZonesSeq" name="zones_seq" schema="">
+            <column dbComment="" dbDefaultValue="" dbName="next_val" dbNotNull="false" dbPosition="1" dbSize="19" dbTypeName="BIGINT" inputType="number" javaName="nextVal" javaType="java.lang.Long" jdbcTypeCode="-5" label="Next val" notNull="false" selected="true"/>
+        </table>
+    </tableList>
+</root>

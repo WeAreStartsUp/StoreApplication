@@ -4,14 +4,16 @@
  */
 package com.startsup.merchant.database.repository;
 
+import com.startsup.merchant.entities.Order;
+import com.startsup.merchant.entities.OrderItemsId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring data Jpa repository for "Zones" <br>
+ * Spring data Jpa repository for "Customers" <br>
  * @author Telosys (http://www.telosys.org/) version 3.3.0
  */
 @Repository
-public interface ZonesRepository extends JpaRepository<Zones, Integer>, JpaSpecificationExecutor<Zones> {
+public interface OrdersRepository extends JpaRepository<Order, Integer>, JpaSpecificationExecutor<Order> {
 }

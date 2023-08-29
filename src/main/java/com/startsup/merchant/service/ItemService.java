@@ -1,7 +1,6 @@
 package com.startsup.merchant.service;
 
 import com.startsup.merchant.database.repository.ItemsRepository;
-import com.startsup.merchant.entities.Items;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +43,9 @@ public class ItemService {
         return items;
     }
 
+    public void saveItems(List<Items> itemsList) {
+        itemsRepository.saveAll(itemsList);
+    }
 
     public Optional<Items> updateItem(Items item) {
         try {

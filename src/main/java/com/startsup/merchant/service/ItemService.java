@@ -1,6 +1,7 @@
 package com.startsup.merchant.service;
 
 import com.startsup.merchant.database.repository.ItemsRepository;
+import com.startsup.merchant.entities.Items;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

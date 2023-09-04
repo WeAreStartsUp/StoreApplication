@@ -1,5 +1,6 @@
 package com.startsup.merchant.controller;
 
+import com.startsup.merchant.entities.Items;
 import com.startsup.merchant.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

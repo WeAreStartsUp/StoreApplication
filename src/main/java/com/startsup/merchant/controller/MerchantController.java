@@ -1,11 +1,7 @@
 package com.startsup.merchant.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.startsup.merchant.entities.Merchants;
 import com.startsup.merchant.service.MerchantService;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -19,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
+@RequestMapping("/api/v1")
 public class MerchantController {
 
     private final MerchantService merchantService;
@@ -32,7 +29,7 @@ public class MerchantController {
     }
 
 
-    @GetMapping("/api/v1/healthcheck")
+    @GetMapping("/healthcheck")
     public ResponseEntity<Map<String, Object>> healthCheck() {
         JSONObject response = new JSONObject();
         response.put("status", "healthy");
@@ -41,7 +38,7 @@ public class MerchantController {
         return ResponseEntity.ok(response.toMap());
     }
 
-    @GetMapping("/api/v1/merchants")
+    @GetMapping("/merchants")
     public ResponseEntity<List<Merchants>> fetchAllMerchants() {
         logger.info("Request Received");
         List<Merchants> merchants = merchantService.getAllMerchants();
@@ -49,7 +46,7 @@ public class MerchantController {
         return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(merchants);
     }
 
-    @PostMapping("/api/v1/merchants")
+    @PostMapping("/merchants")
     public ResponseEntity<Merchants> createOrUpdateMerchant(@RequestBody Merchants merchant) {
         logger.info("Request received, {}", merchant);
         return ResponseEntity.ok(merchantService.updateMerchant(merchant).get());

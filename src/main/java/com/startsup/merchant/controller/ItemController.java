@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
+@RequestMapping("/api/v1")
 public class ItemController {
 
     private final ItemService itemService;
@@ -23,7 +24,7 @@ public class ItemController {
     }
 
 
-    @GetMapping("/api/v1/items")
+    @GetMapping("/items")
     public ResponseEntity<List<Items>> fetchAllItems() {
         logger.info("Request Received");
         List<Items> items = itemService.getAllItems();
@@ -31,7 +32,7 @@ public class ItemController {
         return ResponseEntity.ok(items);
     }
 
-    @GetMapping("/api/v1/items/{id}")
+    @GetMapping("/items/{id}")
     public ResponseEntity<Object> fetchItemById(@PathVariable int id) {
         logger.info("Request Received");
         Optional<Items> items = itemService.getItemById(id);
@@ -40,7 +41,7 @@ public class ItemController {
 
     }
 
-    @GetMapping("/api/v1/items/merchant/{merchant_id}")
+    @GetMapping("/items/merchant/{merchant_id}")
     public ResponseEntity<List<Items>> fetchAllItemsByMerchantId(@PathVariable int merchant_id) {
         logger.info("Request Received");
         List<Items> items = itemService.getAllItemsByMerchantId(merchant_id);
@@ -48,7 +49,7 @@ public class ItemController {
         return items.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(items);
     }
 
-    @PostMapping("/api/v1/items")
+    @PostMapping("/items")
     public ResponseEntity<Items> createOrUpdateItem(@RequestBody Items item) {
         return ResponseEntity.ok(itemService.updateItem(item).get());
     }

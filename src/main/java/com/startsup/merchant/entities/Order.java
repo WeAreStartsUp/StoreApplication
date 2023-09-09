@@ -27,6 +27,7 @@ public class Order implements Serializable {
     //--- ENTITY PRIMARY KEY 
     @Id
     @Column(name="id", nullable=false)
+    @GeneratedValue
     private Integer    id ;
 
     //--- ENTITY DATA FIELDS 
@@ -52,7 +53,7 @@ public class Order implements Serializable {
     private Double     total ;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="order_start_time", nullable=false)
+    @Column(name="order_start_time", updatable = false)
     private Date       orderStartTime ;
 
     public void setUser(User user) {
@@ -71,7 +72,7 @@ public class Order implements Serializable {
         this.merchants = merchants;
     }
 
-    @Column(name="order_status", nullable=false, length=50)
+    @Column(name="order_status", length=50)
     private String     orderStatus ;
 
     @Column(name="payment_mode", length=45)
@@ -106,16 +107,13 @@ public class Order implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="customer_id", referencedColumnName="id", insertable=false, updatable=false)
-    @JsonIgnore
     private Customers  customers ; 
 
     @OneToMany(mappedBy="order")
-    @JsonIgnore
     private List<OrderItems> listOfOrderItems ; 
 
     @ManyToOne
     @JoinColumn(name="merchant_id", referencedColumnName="id", insertable=false, updatable=false)
-    @JsonIgnore
     private Merchants  merchants ; 
 
 

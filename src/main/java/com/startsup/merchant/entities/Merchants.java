@@ -7,6 +7,8 @@ package com.startsup.merchant.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -70,13 +72,27 @@ public class Merchants implements Serializable {
 
     //--- ENTITY LINKS ( RELATIONSHIP )
     @OneToMany(mappedBy="merchants")
-    private List<Items> listOfItems ; 
+    @JsonIgnore
+    private List<Items> listOfItems ;
+
+    public void setListOfItems(List<Items> listOfItems) {
+        this.listOfItems = listOfItems;
+    }
+
+    public void setZones(Zones zones) {
+        this.zones = zones;
+    }
+
+    public void setListOfOrder(List<Order> listOfOrder) {
+        this.listOfOrder = listOfOrder;
+    }
 
     @ManyToOne
     @JoinColumn(name="zone_id", referencedColumnName="id", insertable=false, updatable=false)
     private Zones      zones ; 
 
     @OneToMany(mappedBy="merchants")
+    @JsonIgnore
     private List<Order> listOfOrder ; 
 
 
@@ -189,15 +205,15 @@ public class Merchants implements Serializable {
     //--- GETTERS FOR LINKS
     public List<Items> getListOfItems() {
         return this.listOfItems;
-    } 
+    }
 
     public Zones getZones() {
         return this.zones;
-    } 
+    }
 
     public List<Order> getListOfOrder() {
         return this.listOfOrder;
-    } 
+    }
 
     //--- toString specific method
 	@Override

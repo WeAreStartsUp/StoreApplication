@@ -1,9 +1,14 @@
 package com.startsup.merchant.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.startsup.merchant.entities.Merchants;
 import com.startsup.merchant.service.MerchantService;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,11 +42,11 @@ public class MerchantController {
     }
 
     @GetMapping("/api/v1/merchants")
-    public List<Merchants> fetchAllMerchants() {
+    public ResponseEntity<List<Merchants>> fetchAllMerchants() {
         logger.info("Request Received");
         List<Merchants> merchants = merchantService.getAllMerchants();
         logger.info("Response={}", merchants);
-        return merchants;
+        return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(merchants);
     }
 
     @PostMapping("/api/v1/merchants")

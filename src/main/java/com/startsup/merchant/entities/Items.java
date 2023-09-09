@@ -73,7 +73,15 @@ public class Items implements Serializable {
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
     @JoinColumn(name="merchant_id", referencedColumnName="id", insertable=false, updatable=false)
-    private Merchants  merchants ; 
+    private Merchants  merchants ;
+
+    public void setMerchants(Merchants merchants) {
+        this.merchants = merchants;
+    }
+
+    public void setListOfOrderItems(List<OrderItems> listOfOrderItems) {
+        this.listOfOrderItems = listOfOrderItems;
+    }
 
     @OneToMany(mappedBy="items")
     private List<OrderItems> listOfOrderItems ; 

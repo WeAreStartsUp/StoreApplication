@@ -6,6 +6,8 @@ package com.startsup.merchant.entities;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -39,9 +41,19 @@ public class Zones implements Serializable {
 
     //--- ENTITY LINKS ( RELATIONSHIP )
     @OneToMany(mappedBy="zones")
-    private List<Customers> listOfCustomers ; 
+    @JsonIgnore
+    private List<Customers> listOfCustomers ;
+
+    public void setListOfCustomers(List<Customers> listOfCustomers) {
+        this.listOfCustomers = listOfCustomers;
+    }
+
+    public void setListOfMerchants(List<Merchants> listOfMerchants) {
+        this.listOfMerchants = listOfMerchants;
+    }
 
     @OneToMany(mappedBy="zones")
+    @JsonIgnore
     private List<Merchants> listOfMerchants ; 
 
 

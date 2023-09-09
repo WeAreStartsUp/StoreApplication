@@ -5,6 +5,7 @@
 package com.startsup.merchant.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -23,7 +24,15 @@ public class OrderItems implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //--- ENTITY PRIMARY KEY 
+    public void setItems(Items items) {
+        this.items = items;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    //--- ENTITY PRIMARY KEY
     @Id
     @Column(name="order_id", nullable=false)
     private Integer    orderId ;
@@ -46,10 +55,12 @@ public class OrderItems implements Serializable {
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
     @JoinColumn(name="item_id", referencedColumnName="id", insertable=false, updatable=false)
+    @JsonIgnore
     private Items      items ; 
 
     @ManyToOne
     @JoinColumn(name="order_id", referencedColumnName="id", insertable=false, updatable=false)
+    @JsonIgnore
     private Order      order ; 
 
 

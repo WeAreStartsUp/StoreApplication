@@ -6,6 +6,8 @@ package com.startsup.merchant.entities;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -61,9 +63,11 @@ public class Customers implements Serializable {
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
     @JoinColumn(name="zone_id", referencedColumnName="id", insertable=false, updatable=false)
+    @JsonIgnore
     private Zones      zones ; 
 
     @OneToMany(mappedBy="customers")
+    @JsonIgnore
     private List<Order> listOfOrder ; 
 
 

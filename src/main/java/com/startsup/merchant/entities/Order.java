@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -53,6 +55,22 @@ public class Order implements Serializable {
     @Column(name="order_start_time", nullable=false)
     private Date       orderStartTime ;
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
+    }
+
+    public void setListOfOrderItems(List<OrderItems> listOfOrderItems) {
+        this.listOfOrderItems = listOfOrderItems;
+    }
+
+    public void setMerchants(Merchants merchants) {
+        this.merchants = merchants;
+    }
+
     @Column(name="order_status", nullable=false, length=50)
     private String     orderStatus ;
 
@@ -83,17 +101,21 @@ public class Order implements Serializable {
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
     @JoinColumn(name="delivery_person", referencedColumnName="id", insertable=false, updatable=false)
+    @JsonIgnore
     private User       user ; 
 
     @ManyToOne
     @JoinColumn(name="customer_id", referencedColumnName="id", insertable=false, updatable=false)
+    @JsonIgnore
     private Customers  customers ; 
 
     @OneToMany(mappedBy="order")
+    @JsonIgnore
     private List<OrderItems> listOfOrderItems ; 
 
     @ManyToOne
     @JoinColumn(name="merchant_id", referencedColumnName="id", insertable=false, updatable=false)
+    @JsonIgnore
     private Merchants  merchants ; 
 
 

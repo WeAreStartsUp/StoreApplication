@@ -6,6 +6,8 @@ package com.startsup.merchant.entities;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -45,8 +47,13 @@ public class User implements Serializable {
     private String     encryptedPass ;
 
 
+    public void setListOfOrder(List<Order> listOfOrder) {
+        this.listOfOrder = listOfOrder;
+    }
+
     //--- ENTITY LINKS ( RELATIONSHIP )
     @OneToMany(mappedBy="user")
+    @JsonIgnore
     private List<Order> listOfOrder ; 
 
 

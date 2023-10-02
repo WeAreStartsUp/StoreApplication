@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 //	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:3.1.9'
 	implementation 'org.apache.poi:poi:5.2.3'
 	implementation 'org.apache.poi:poi-ooxml:5.2.3'

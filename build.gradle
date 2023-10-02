@@ -23,6 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 //	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:3.1.9'
 	implementation 'org.apache.poi:poi:5.2.3'
 	implementation 'org.apache.poi:poi-ooxml:5.2.3'
@@ -34,8 +35,8 @@ dependencies {
 	implementation 'org.json:json:20230618'
 //	implementation 'jakarta.json:jakarta.json-api:2.1.2'
 //	implementation 'com.google.code.gson:gson:2.10.1'
-//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-//	runtimeOnly 'com.mysql:mysql-connector-j'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	runtimeOnly 'com.mysql:mysql-connector-j
 //	implementation 'org.mongodb:mongodb-driver-sync:4.10.2'
 //	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.1.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -43,6 +44,8 @@ dependencies {
 //	implementation 'org.jooq:jooq:3.13.4';
 //	implementation 'org.jooq:jooq-meta:3.13.4';
 //	implementation 'org.jooq:jooq-codegen:3.13.4';
+
+//	runtimeOnly 'com.h2database:h2'
 	implementation 'mysql:mysql-connector-java:8.0.32';
 
 

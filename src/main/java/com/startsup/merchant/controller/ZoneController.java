@@ -17,7 +17,7 @@ import java.util.Map;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/zone")
+@RequestMapping("/api/v1/")
 public class ZoneController {
 
     private final ZoneService zoneService;
@@ -30,7 +30,7 @@ public class ZoneController {
         this.zoneService = zoneService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/zone")
     public ResponseEntity<List<Zones>> fetchAllMerchants() {
         logger.info("Request Received");
         List<Zones> merchants = zoneService.getAllZones();
@@ -38,7 +38,7 @@ public class ZoneController {
         return ResponseEntity.status(200).contentType(MediaType.APPLICATION_JSON).body(merchants);
     }
 
-    @PostMapping("/")
+    @PostMapping("/zone")
     public ResponseEntity<Zones> createOrUpdateMerchant(@RequestBody Zones zone) {
         logger.info("Request received, {}", zone);
         return ResponseEntity.ok(zoneService.addOrUpdateZone(zone));

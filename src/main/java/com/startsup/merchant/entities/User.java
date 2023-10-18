@@ -25,7 +25,7 @@ public class User implements Serializable {
     //--- ENTITY PRIMARY KEY 
     @Id
     @Column(name="id", nullable=false)
-    private Integer    id ;
+    private Integer id ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="name", nullable=false, length=80)
@@ -46,6 +46,8 @@ public class User implements Serializable {
     @Column(name="encrypted_pass", length=2147483647)
     private String     encryptedPass ;
 
+    @Column(name="enabled")
+    private boolean enabled;
 
     public void setListOfOrder(List<Order> listOfOrder) {
         this.listOfOrder = listOfOrder;
@@ -54,15 +56,7 @@ public class User implements Serializable {
     //--- ENTITY LINKS ( RELATIONSHIP )
     @OneToMany(mappedBy="user")
     @JsonIgnore
-    private List<Order> listOfOrder ; 
-
-
-    /**
-     * Constructor
-     */
-    public User() {
-		super();
-    }
+    private List<Order> listOfOrder ;
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setId( Integer id ) {
